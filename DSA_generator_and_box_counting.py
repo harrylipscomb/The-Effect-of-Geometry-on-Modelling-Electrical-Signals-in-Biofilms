@@ -1,3 +1,12 @@
+"""
+Created on Sat Oct 5 12:11:44 2022
+
+Code used to generate undulating surfaces using the diamond-square algorithm (DSA). A box-counting method is then used to determine the fractal dimension of the surfaces generated.
+Fractal dimension, surface roughness (a parameter used within the DSA), root-mean square of the bacteria heights and kurtosis are all plotted together.
+
+@author: Harry Lipscomb 
+"""
+
 import random
 import numpy as np
 import matplotlib.pyplot as plt
@@ -169,7 +178,7 @@ def main():
     
         return kurtosis_number
     
-    def main(n, r, fixed, show=False):
+    def sub_main(n, r, fixed, show=False):
     
         terrain = make_terrain(n, r, fixed)
         terrain = delete_row_and_column(terrain)
@@ -201,7 +210,7 @@ def main():
         rms_array = np.array([])
         kurtosis_array = np.array([])
         while i<=(repeats-1):
-            D, rms_value, kurtosis_value = main(n, r, fixed, show)
+            D, rms_value, kurtosis_value = sub_main(n, r, fixed, show)
             D_values = np.append(D_values, D)
             i += 1
             rms_array = np.append(rms_array, rms_value)
